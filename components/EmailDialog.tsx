@@ -44,6 +44,7 @@ import {
   sendUserEmail,
   sendUserServers,
 } from "@/lib/actions/verification.actions";
+import { sendEmailForAllUsers } from "@/lib/actions/appointment.actions";
 
 const EmailDialog = ({
   isShowText = false,
@@ -70,11 +71,11 @@ const EmailDialog = ({
     { _id: string; email: string; lastname: string; firstname: string }[]
   >([]);
 
+  const [allSendersLoader, setAllSendersLoader] = useState<boolean>(false);
+
   // const handleGetEmail = (email: string) => {
   //   setEmailsToSend([email]);
   // };
-
-  console.log(email);
 
   const [isEmailLoading, setIsEmailLoading] = useState<boolean>(false);
 
@@ -237,6 +238,35 @@ const EmailDialog = ({
         console.log(error.message);
       } finally {
         setIsLoadingServers(false);
+      }
+    }
+  };
+
+  const handleSendAllUsers = async () => {
+    if (!subject || !message) {
+      toast.error("L'objet et le message ne doivent pas être vides.", {
+        style: {
+          background: "#1A1D21",
+          color: "#ef4444",
+          border: "1px solid #363A3D",
+        },
+      });
+    } else {
+      try {
+        setAllSendersLoader(true);
+        const response = await sendEmailForAllUsers(subject, message);
+        if (response) {
+          toast.success(response.successMessage, {
+            style: {
+              background: "#1A1D21",
+              color: "#22c55e",
+              border: "1px solid #363A3D",
+            },
+          });
+        }
+      } catch (error) {
+      } finally {
+        setAllSendersLoader(false);
       }
     }
   };
@@ -450,6 +480,18 @@ const EmailDialog = ({
         </div>
 
         <DialogFooter className="mt-8">
+          <Button
+            onClick={handleSendAllUsers}
+            variant="outline"
+            className="text-orange-500 border-dark-500"
+            disabled={allSendersLoader}
+          >
+            {allSendersLoader ? (
+              <Loader className="text-white animate-spin" />
+            ) : (
+              "Envoyer à tous"
+            )}
+          </Button>
           <Button
             variant="outline"
             className="text-red-500 border-dark-500"

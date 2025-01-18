@@ -76,7 +76,7 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
           >
             <div style={{ textAlign: "center" }}>
               <img
-                src="https://2ibn.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.com/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -123,25 +123,56 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
                   color: "#666666",
                 }}
               >
-                Your transaction has been completed and your items have been delivered to your account.
+                Your transaction has been completed and your items have been
+                delivered to your account.
               </p>
             </div>
 
             {/* Order Details */}
             <div style={{ marginBottom: "20px" }}>
-              <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
                 <strong>Order Number:</strong> {orderNum}
               </p>
-              <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
                 <strong>Product/Service:</strong> Dofus
               </p>
-              <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
                 <strong>Total Amount:</strong> {formatCurrency(totalPrice, cur)}
               </p>
-              <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
                 <strong>Delivery Date:</strong> {formatDate(dateDelivered)}
               </p>
-              <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "15px",
+                  lineHeight: "1.5",
+                }}
+              >
                 <strong>Status:</strong>{" "}
                 <span style={{ color: "#22c55e" }}>Delivered ✓</span>
               </p>
@@ -289,8 +320,15 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
             </table>
 
             <div>
-              <p style={{ color: "#666666", fontSize: "16px", lineHeight: "1.5" }}>
-                Thank you for choosing 2IBN for your gaming needs! You can check your order history and details here:
+              <p
+                style={{
+                  color: "#666666",
+                  fontSize: "16px",
+                  lineHeight: "1.5",
+                }}
+              >
+                Thank you for choosing ibendouma for your gaming needs! You can
+                check your order history and details here:
               </p>
               <span
                 style={{
@@ -302,7 +340,7 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
               >
                 👉 My Account{" "}
                 <a
-                  href="https://2ibn.vercel.app/profile"
+                  href="https://ibendouma.com/profile"
                   style={{
                     color: "#d97706",
                     textDecoration: "none",
@@ -312,13 +350,25 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
                 </a>
               </span>
             </div>
-            
-            <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5", marginTop: "20px" }}>
-              If you have any questions about your delivery or need further assistance, our support team is available 24/7 at support@2ibn.com or via live chat.
+
+            <p
+              style={{
+                color: "#666666",
+                fontSize: "15px",
+                lineHeight: "1.5",
+                marginTop: "20px",
+              }}
+            >
+              If you have any questions about your delivery or need further
+              assistance, our support team is available 24/7 at
+              support@ibendouma.com or via live chat.
             </p>
-            <p style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}>
-              Best regards,<br />
-              The 2ibn Team
+            <p
+              style={{ color: "#666666", fontSize: "15px", lineHeight: "1.5" }}
+            >
+              Best regards,
+              <br />
+              The ibendouma Team
             </p>
           </td>
         </tr>
@@ -332,13 +382,15 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
               textAlign: "center",
             }}
           >
-            <p style={{ color: "#999999", fontSize: "14px", margin: "0 0 10px" }}>
+            <p
+              style={{ color: "#999999", fontSize: "14px", margin: "0 0 10px" }}
+            >
               © 2024 JBK Services INTERNATIONAL FZ-LLC. All rights reserved.
             </p>
 
             <div style={{ marginTop: "20px" }}>
               <a
-                href="https://2ibn.com"
+                href="https://ibendouma.com"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -349,7 +401,7 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/echange-de-kamas"
+                href="https://ibendouma.com/echange-de-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -360,7 +412,7 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/vendre-des-kamas"
+                href="https://ibendouma.com/vendre-des-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -381,8 +433,13 @@ export const OrderDeliveryTemplate: React.FC<OrderDeliveryTemplateProps> = ({
         style={{ maxWidth: "600px", margin: "20px auto" }}
       >
         <tr>
-          <td style={{ textAlign: "center", color: "#999999", fontSize: "12px" }}>
-            <p>This email was sent by 2IBN. To ensure you receive our emails, add support@2ibn.com to your contact list.</p>
+          <td
+            style={{ textAlign: "center", color: "#999999", fontSize: "12px" }}
+          >
+            <p>
+              This email was sent by ibendouma. To ensure you receive our
+              emails, add support@ibendouma.com to your contact list.
+            </p>
           </td>
         </tr>
       </table>

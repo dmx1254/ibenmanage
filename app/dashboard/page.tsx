@@ -30,8 +30,8 @@ import Count from "@/components/Count";
 import { SearchParamProps } from "@/lib/types/types";
 
 export const metadata: Metadata = {
-  title: "2ibn Dashboard",
-  description: "2ibn dashboard for virtual game dofus management",
+  title: "Ibendouma Dashboard",
+  description: "Ibendouma dashboard for virtual game dofus management",
 };
 
 export default async function DashboardPage({

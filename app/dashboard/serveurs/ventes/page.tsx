@@ -30,7 +30,6 @@ const ServerVentePage = async ({
 
   const currencies = await getVenteCurrencies();
 
-
   // console.log(serversVente.servers);
 
   return (
@@ -81,7 +80,7 @@ const ServerVentePage = async ({
         >
           <DataTable
             totalPages={serversVente.totalPages || 0}
-            itemsperPage={15}
+            itemsperPage={45}
             columns={columns}
             data={serversVente.servers}
             currentPage={currentPage}

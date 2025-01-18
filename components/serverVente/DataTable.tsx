@@ -117,24 +117,170 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
+          <div className="w-full absolute flex justify-center mx-auto">
+            <TableHeader className="w-full bg-dark-400 p-2 text-center">
+              <span>Dofus kamas</span>
+            </TableHeader>
+          </div>
+
           <TableBody>
+            <TableRow className="shad-table-row">
+              <span>Hey</span>
+            </TableRow>
             {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="shad-table-row"
+              table
+                .getRowModel()
+                .rows.filter(
+                  (row) =>
+                    (row.original as any).serverCategory === "dofus-kamas"
+                )
+                .map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="shad-table-row"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
                 >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext()
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+          <div className="w-full absolute flex justify-center mx-auto">
+            <TableHeader className="w-full bg-dark-400 p-2 text-center">
+              <span>Dofus touch</span>
+            </TableHeader>
+          </div>
+
+          <TableBody>
+            <TableRow className="shad-table-row">
+              <span>Hey</span>
+            </TableRow>
+            {table.getRowModel().rows?.length ? (
+              table
+                .getRowModel()
+                .rows.filter(
+                  (row) =>
+                    (row.original as any).serverCategory === "dofus-touch"
+                )
+                .map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="shad-table-row"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+          <div className="w-full absolute flex justify-center mx-auto">
+            <TableHeader className="w-full bg-dark-400 p-2 text-center">
+              <span>Dofus retro</span>
+            </TableHeader>
+          </div>
+
+          <TableBody>
+            <TableRow className="shad-table-row">
+              <span>Hey</span>
+            </TableRow>
+            {table.getRowModel().rows?.length ? (
+              table
+                .getRowModel()
+                .rows.filter(
+                  (row) =>
+                    (row.original as any).serverCategory === "dofus-retro"
+                )
+                .map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="shad-table-row"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
+            ) : (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  No results.
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+          <div className="w-full absolute flex justify-center mx-auto">
+            <TableHeader className="w-full bg-dark-400 p-2 text-center">
+              <span>Wakfu</span>
+            </TableHeader>
+          </div>
+
+          <TableBody>
+            <TableRow className="shad-table-row">
+              <span>Hey</span>
+            </TableRow>
+            {table.getRowModel().rows?.length ? (
+              table
+                .getRowModel()
+                .rows.filter(
+                  (row) => (row.original as any).serverCategory === "wakfu"
+                )
+                .map((row) => (
+                  <TableRow
+                    key={row.id}
+                    data-state={row.getIsSelected() && "selected"}
+                    className="shad-table-row"
+                  >
+                    {row.getVisibleCells().map((cell) => (
+                      <TableCell key={cell.id}>
+                        {flexRender(
+                          cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))
             ) : (
               <TableRow>
                 <TableCell

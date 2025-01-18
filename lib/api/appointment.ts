@@ -5,8 +5,9 @@ import { goapiModels } from "../models/ibytrade-models";
 import { Resend } from "resend";
 import { OrderDeliveryTemplate } from "@/components/orderConfirmed-template";
 import { OrderPaymentTemplate } from "@/components/order-iby-confirmed";
+import SendallusersEmailTemplate from "@/components/SendallusersEmailTemplate";
 
-const resend = new Resend(process.env.RESEND_2IBN_API_KEY);
+const resend = new Resend(process.env.RESEND_2IBN_API_KEY!);
 
 function parseDate(dateString: string): Date {
   return parse(dateString, "dd-MM-yyyy", new Date());
@@ -109,13 +110,23 @@ export async function getAllOrdersAchatList(
   }
 }
 
+export async function deleteAllBuyOrders() {
+  try {
+    const { BuyModel } = await goapiModels;
+    await BuyModel.deleteMany();
+    return { successMessage: "Orders deleted successfully" };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getAllServersAchatList(
   servername: string,
   category: string,
   currentPage: number
 ) {
   const { ServerModel } = await goapiModels;
-  let itemsPerPage: number = 15;
+  let itemsPerPage: number = 45;
   const offset = (currentPage - 1) * itemsPerPage;
 
   const matchConditions: any = {};
@@ -161,13 +172,33 @@ export async function getAllServersAchatList(
   }
 }
 
+export async function getServersBuyForCreate() {
+  const { ServerModel } = await goapiModels;
+  try {
+    const response = await ServerModel.find();
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function createAnOrderAchat(data: any) {
+  const { BuyModel } = await goapiModels;
+  try {
+    await BuyModel.create(data);
+    return { successMessage: "Order created successfully" };
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 export async function getAllServersVenteList(
   servername: string,
   category: string,
   currentPage: number
 ) {
   const { ServerModelIben } = await ibenModels;
-  let itemsPerPage: number = 15;
+  let itemsPerPage: number = 45;
   const offset = (currentPage - 1) * itemsPerPage;
 
   const matchConditions: any = {};
@@ -622,5 +653,37 @@ export async function fiveRecentIbyOrders() {
     return recentOrderIby;
   } catch (error) {
     console.log(error);
+  }
+}
+
+export async function sendAllUsersEmail(subject: string, message: string) {
+  try {
+    const { UserIbenModel } = await ibenModels;
+
+    // Récupération des e-mails des utilisateurs
+    const allUsersEmails = await UserIbenModel.find().select("email");
+
+    // Transformation en tableau d'adresses e-mail
+    const emails = allUsersEmails.map((user: { email: string }) => user.email);
+
+    // Envoi de l'e-mail
+    const { data, error } = await resend.emails.send({
+      from: "Ibendouma Support <support@ibendouma.com>",
+      to: emails, // Tableau d'adresses e-mail
+      subject: subject,
+      react: SendallusersEmailTemplate({
+        message,
+      }),
+    });
+
+    // Gestion des erreurs
+    if (error) {
+      throw new Error(error.message);
+    }
+
+    return { successMessage: "Emails envoyés avec succès" };
+  } catch (error) {
+    console.error("Erreur lors de l'envoi des emails :", error);
+    return { errorMessage: "Échec de l'envoi des emails", error };
   }
 }

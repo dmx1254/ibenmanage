@@ -4,11 +4,15 @@ import { parseStringify } from "../utils";
 import { revalidatePath } from "next/cache";
 import {
   AchatGoUpdateStatus,
+  createAnOrderAchat,
   createRate,
+  deleteAllBuyOrders,
   exchangeUpdateStatus,
   fiveRecentIbyOrders,
   getAllIbenOrdersCounts,
   getRate,
+  getServersBuyForCreate,
+  sendAllUsersEmail,
   updateRate,
   venteIbenUpdateStatus,
 } from "../api/appointment";
@@ -51,6 +55,24 @@ export const updateEchangeRate = async (rate: number, rateId: string) => {
   }
 };
 
+export const getAllServersAchat = async () => {
+  try {
+    const servers = await getServersBuyForCreate();
+    return parseStringify(servers);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const createOrdAchat = async (data: any) => {
+  try {
+    const response = await createAnOrderAchat(data);
+    return parseStringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getEchangeRate = async () => {
   try {
     const response = await getRate();
@@ -73,6 +95,15 @@ export const changeEchangeStatus = async (
   }
 };
 
+export const deleteOrdersAllBuy = async () => {
+  try {
+    const response = await deleteAllBuyOrders();
+    return parseStringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const changeVenteStatus = async (status: string, venteId: string) => {
   try {
     const response = await venteIbenUpdateStatus(status, venteId);
@@ -92,3 +123,12 @@ export const changeAchatStatus = async (status: string, achatId: string) => {
     console.error(error);
   }
 };
+
+export async function sendEmailForAllUsers(subject: string, message: string) {
+  try {
+    const response = await sendAllUsersEmail(subject, message);
+    return parseStringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+}

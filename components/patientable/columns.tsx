@@ -12,6 +12,7 @@ import ClientAction from "./ClientAction";
 import UpdateClient from "../patientActtion/UpdateClient";
 import DeleteClient from "../patientActtion/DeleteClient";
 import EmailDialog from "../EmailDialog";
+import CreateOrderAchat from "../CreateOrderAchat";
 
 export const columns: ColumnDef<USERLOGINRESPONSE>[] = [
   {
@@ -119,6 +120,11 @@ export const columns: ColumnDef<USERLOGINRESPONSE>[] = [
               email={data.email || ""}
               firstnameS={data.firstname || ""}
               lastnameS={data.lastname || ""}
+            />
+            <CreateOrderAchat
+              userId={data._id}
+              lastname={data.lastname}
+              firstname={data.firstname}
             />
           </div>
           <ClientAction data={data} />

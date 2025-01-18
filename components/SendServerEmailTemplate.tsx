@@ -59,7 +59,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
           >
             <div style={{ textAlign: "center" }}>
               <img
-                src="https://2ibn.vercel.app/ibennewapp-logo.png"
+                src="https://ibendouma.com/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -281,14 +281,14 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
               Si vous avez des questions ou des soucis, notre équipe est
               disponible pour vous aider à
               <a
-                href="mailto:support@2ibn.com"
+                href="mailto:support@ibendouma.com"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
                   margin: "0 10px",
                 }}
               >
-                support@2ibn.com
+                support@ibendouma.com
               </a>
             </span>
           </td>
@@ -305,7 +305,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
                   margin: 0,
                 }}
               >
-                Merci de nous avoir choisi, et bienvenue chez 2iBn ! 🎮
+                Merci de nous avoir choisi, et bienvenue chez ibendouma ! 🎮
               </p>
               <p
                 style={{
@@ -315,7 +315,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
                 }}
               >
                 Cordialement, <br />
-                L'équipe 2iBn
+                L'équipe ibendouma
               </p>
             </div>
           </td>
@@ -342,7 +342,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
             </p>
             <div style={{ marginTop: "20px" }}>
               <a
-                href="https://2ibn.com"
+                href="https://ibendouma.com"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -353,7 +353,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/echange-de-kamas"
+                href="https://ibendouma.com/echange-de-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -364,7 +364,7 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
               </a>{" "}
               |
               <a
-                href="https://2ibn.com/vendre-des-kamas"
+                href="https://ibendouma.com/vendre-des-kamas"
                 style={{
                   color: "#d97706",
                   textDecoration: "none",
@@ -389,8 +389,9 @@ export const SendServerEmailTemplate: React.FC<EmailTemplateProps> = async ({
             style={{ textAlign: "center", color: "#999999", fontSize: "12px" }}
           >
             <p>
-              Cet email a été envoyé par 2IBN. Pour vous assurer de recevoir nos
-              emails, ajoutez support@2ibn.com à votre liste de contacts.
+              Cet email a été envoyé par ibendouma. Pour vous assurer de
+              recevoir nos emails, ajoutez support@ibendouma.com à votre liste
+              de contacts.
             </p>
           </td>
         </tr>

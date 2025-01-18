@@ -153,7 +153,6 @@ const UpdateClient = ({ data }: { data: USERLOGINRESPONSE }) => {
             >
               fermer
             </button>
-            <EmailDialog />
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>

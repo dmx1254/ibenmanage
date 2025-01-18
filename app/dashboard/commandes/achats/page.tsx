@@ -7,6 +7,7 @@ import { getAllOrdersAchatList } from "@/lib/api/appointment";
 import LatestInvoicesSkeleton from "@/components/skelettons/skeletons";
 import DateFilter from "@/components/DateFilter";
 import ScheduleSearch from "@/components/ScheduleSearch";
+import DeAchat from "@/components/DeAchat";
 
 const AchatPage = async ({
   searchParams,
@@ -41,6 +42,7 @@ const AchatPage = async ({
           <h1 className="header">Bienvenue 👋</h1>
           <p className="text-dark-700">Gérer les commandes de la journée</p>
         </section>
+        {/* <DeAchat /> */}
 
         <section className="admin-stat">
           <StatCard

@@ -1,43 +1,13 @@
 import * as React from "react";
 import { parsedDevise } from "@/lib/utils";
 
-interface OrderPaymentTemplateProps {
-  lastname: string;
-  firstname: string;
-  currencymethod: string;
-  totalPrice: number;
-  qte: number;
-  numBuy: string;
-  server: string;
-  gameName: string;
-  pu: number;
-  datePayed: Date;
+interface OrderDeliveryTemplateProps {
+  message: string;
 }
 
-export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
-  lastname,
-  firstname,
-  currencymethod,
-  totalPrice,
-  numBuy,
-  pu,
-  qte,
-  gameName,
-  server,
-  datePayed,
-}) => {
-  const formatDate = (date: Date) => {
-    return new Date(date).toLocaleDateString("fr-FR", {
-      day: "numeric",
-      month: "short",
-      year: "numeric",
-    });
-  };
-
-  const formatCurrency = (amount: number, currency: string) => {
-    return `${amount} ${parsedDevise(currency)}`;
-  };
-
+export const SendallusersEmailTemplate: React.FC<
+  OrderDeliveryTemplateProps
+> = ({ message }) => {
   return (
     <div
       style={{
@@ -71,7 +41,7 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
           >
             <div style={{ textAlign: "center" }}>
               <img
-                src="https://ibendouma.com/ibennewapp-logo.png"
+                src="https://ibendouma.vercel.app/ibennewapp-logo.png"
                 alt="ibendouma logo"
                 style={{
                   width: "100px",
@@ -87,16 +57,6 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
         {/* Main Content */}
         <tr>
           <td style={{ padding: "40px 30px" }}>
-            <h1
-              style={{
-                color: "#333333",
-                fontSize: "24px",
-                marginBottom: "10px",
-              }}
-            >
-              Hi {`${lastname} ${firstname}`},
-            </h1>
-
             <div
               style={{
                 padding: "10px",
@@ -110,108 +70,11 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
                   color: "#666666",
                 }}
               >
-                Thank you for your order!
-              </p>
-              <p
-                style={{
-                  fontSize: "16px",
-                  color: "#666666",
-                }}
-              >
-                We have successfully delivered your order.
+                {message} 🎉
               </p>
             </div>
 
-            {/* Payment Details */}
-            <div style={{ marginBottom: "20px" }}>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Order Number:</strong> {numBuy}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Game:</strong> {gameName}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Server:</strong> {server}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Amount:</strong> {qte}M
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Unit Price:</strong>{" "}
-                {formatCurrency(pu, currencymethod)}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Total Amount:</strong>{" "}
-                {formatCurrency(totalPrice, currencymethod)}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Payment Date:</strong> {formatDate(datePayed)}
-              </p>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "15px",
-                  lineHeight: "1.5",
-                }}
-              >
-                <strong>Status:</strong>{" "}
-                <span style={{ color: "#22c55e" }}>Payed ✓</span>
-              </p>
-            </div>
-
-            <div style={{ marginTop: "20px" }}>
-              <p
-                style={{
-                  color: "#666666",
-                  fontSize: "16px",
-                  lineHeight: "1.5",
-                }}
-              >
-                We have already processed your order. You can track your order
-                status here:
-              </p>
+            <div>
               <span
                 style={{
                   color: "#666666",
@@ -222,7 +85,7 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
               >
                 👉 My Account{" "}
                 <a
-                  href="https://ibendouma.com/profile"
+                  href="https://ibendouma.vercel.app/profile"
                   style={{
                     color: "#d97706",
                     textDecoration: "none",
@@ -241,7 +104,7 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
                 marginTop: "20px",
               }}
             >
-              If you have any questions about your payment or need further
+              If you have any questions about your delivery or need further
               assistance, our support team is available 24/7 at
               support@ibendouma.com or via live chat.
             </p>
@@ -328,3 +191,5 @@ export const OrderPaymentTemplate: React.FC<OrderPaymentTemplateProps> = ({
     </div>
   );
 };
+
+export default SendallusersEmailTemplate;

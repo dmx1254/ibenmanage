@@ -114,6 +114,17 @@ export interface CURRENCY {
   curencyVal: number;
 }
 
+export interface ServerExchange {
+  _id: string;
+  serverName: string;
+  serverCategory: string;
+  serverStatus: string;
+  serverPriceDh: number;
+  serverMinQty: number;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface CurrencyItem {
   code: string;
   name: string;
