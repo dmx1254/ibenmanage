@@ -14,9 +14,11 @@ const fontSans = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   title: "ibendouma",
   description: "ibendouma dashboard management",
-  icons:{
-    icon: "/logo.png"
-  }
+  icons: {
+    icon: "/favlogo.png",
+    shortcut: "/favlogo.png",
+    apple: "/favlogo.png",
+  },
 };
 
 export default async function RootLayout({
