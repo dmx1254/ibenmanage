@@ -3,8 +3,10 @@ import Image from "next/image";
 import { getServerSession } from "next-auth";
 import { options } from "./api/auth/[...nextauth]/option";
 import { redirect } from "next/navigation";
+import { connectDB } from "@/lib/db";
 
 export default async function Home() {
+  await connectDB();
   const session = await getServerSession(options);
   if (session) redirect("/dashboard");
 

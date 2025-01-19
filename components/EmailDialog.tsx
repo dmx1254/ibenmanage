@@ -115,13 +115,12 @@ const EmailDialog = ({
       });
     } else {
       try {
-        if (!lastnameS || !firstnameS) return;
         setIsLoadingEmail(true);
         const result = await sendUserEmail(
           emailFiltered[0],
           message,
-          lastnameS,
-          firstnameS,
+          lastnameS!,
+          firstnameS!,
           subject,
           attachedFiles
         );
@@ -503,7 +502,7 @@ const EmailDialog = ({
             variant="outline"
             onClick={handleSendEmail}
             className="text-green-500 border-dark-500"
-            // disabled={isLoadingEmail}
+            disabled={isLoadingEmail}
           >
             {isLoadingEmail ? (
               <Loader className="text-white animate-spin" />

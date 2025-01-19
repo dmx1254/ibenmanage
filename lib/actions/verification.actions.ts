@@ -42,13 +42,14 @@ export async function sendUserEmail(
       cid, // Ajoutez le CID si c'est une image
     };
   });
-
+  const last = lastname || "tjon";
+  const first = firstname || "tmon";
   // Préparez le contenu HTML de l'email
   const emailHtml = WriteEmailTemplate({
     email,
     message,
-    lastname,
-    firstname,
+    lastname: last,
+    firstname: first,
     files,
   });
 

@@ -5,7 +5,6 @@ import React from "react";
 
 const DeAchat = () => {
   const handleDelete = async () => {
-    alert("Delete");
     const response = await deleteOrdersAllBuy();
     alert(response?.successMessage);
   };

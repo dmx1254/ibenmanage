@@ -33,6 +33,7 @@ import {
 
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import Image from "next/image";
+import { Card } from "../ui/card";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -117,11 +118,10 @@ export function DataTable<TData, TValue>({
               </TableRow>
             ))}
           </TableHeader>
-          <div className="w-full absolute flex justify-center mx-auto">
-            <TableHeader className="w-full bg-dark-400 p-2 text-center">
-              <span>Dofus kamas</span>
-            </TableHeader>
-          </div>
+
+          <TableHeader className="w-full border-none absolute flex justify-center bg-dark-400 p-2 text-center">
+            <span>Dofus kamas</span>
+          </TableHeader>
 
           <TableBody>
             <TableRow className="shad-table-row">
@@ -161,11 +161,9 @@ export function DataTable<TData, TValue>({
               </TableRow>
             )}
           </TableBody>
-          <div className="w-full absolute flex justify-center mx-auto">
-            <TableHeader className="w-full bg-dark-400 p-2 text-center">
-              <span>Dofus touch</span>
-            </TableHeader>
-          </div>
+          <TableHeader className="w-full border-none absolute flex justify-center bg-dark-400 p-2 text-center">
+            <span>Dofus touch</span>
+          </TableHeader>
 
           <TableBody>
             <TableRow className="shad-table-row">
@@ -205,11 +203,9 @@ export function DataTable<TData, TValue>({
               </TableRow>
             )}
           </TableBody>
-          <div className="w-full absolute flex justify-center mx-auto">
-            <TableHeader className="w-full bg-dark-400 p-2 text-center">
-              <span>Dofus retro</span>
-            </TableHeader>
-          </div>
+          <TableHeader className="w-full border-none absolute flex justify-center bg-dark-400 p-2 text-center">
+            <span>Dofus retro</span>
+          </TableHeader>
 
           <TableBody>
             <TableRow className="shad-table-row">
@@ -249,11 +245,9 @@ export function DataTable<TData, TValue>({
               </TableRow>
             )}
           </TableBody>
-          <div className="w-full absolute flex justify-center mx-auto">
-            <TableHeader className="w-full bg-dark-400 p-2 text-center">
-              <span>Wakfu</span>
-            </TableHeader>
-          </div>
+          <TableHeader className="w-full border-none absolute flex justify-center bg-dark-400 p-2 text-center">
+            <span>Wakfu</span>
+          </TableHeader>
 
           <TableBody>
             <TableRow className="shad-table-row">
