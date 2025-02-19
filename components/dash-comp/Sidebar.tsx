@@ -9,9 +9,18 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { NavUser } from "../sidebar-bottom";
 import EmailDialog from "../EmailDialog";
+import { useEffect, useState } from "react";
+import { getPendingLengthOrders } from "@/lib/actions/appointment.actions";
 
 const Sidebar = () => {
   const pathname = usePathname();
+  const [or, setOr] = useState<{
+    orderBPend: number;
+    orderEPend: number;
+    orderSPend: number;
+  }>({ orderBPend: 0, orderEPend: 0, orderSPend: 0 });
+
+  // console.log(or);
 
   const { data: session } = useSession();
 
@@ -20,6 +29,14 @@ const Sidebar = () => {
     email: session?.user.email || "admin@gmail.com",
     avatar: "/avatars/04.png",
   };
+
+  useEffect(() => {
+    const getPendingOrders = async () => {
+      const data = await getPendingLengthOrders();
+      setOr(data);
+    };
+    getPendingOrders();
+  }, []);
 
   return (
     <div className="admin-profile-cop sticky left-0 top-0 bottom-0 max-h-screen max-md:hidden md:w-60">
@@ -49,7 +66,10 @@ const Sidebar = () => {
                 })}
                 asChild
               >
-                <Link href={profil.slug} className="flex items-start z-20 gap-2">
+                <Link
+                  href={profil.slug}
+                  className="flex items-start z-20 gap-2"
+                >
                   <span>
                     <profil.icon size={20} />
                   </span>
@@ -71,8 +91,28 @@ const Sidebar = () => {
                     )}
                     asChild
                   >
-                    <Link className="flex items-start gap-2" href={sub.slug}>
+                    <Link
+                      className="relative flex items-start gap-2"
+                      href={sub.slug}
+                    >
                       {sub.title}
+                      {sub.title === "Echanges" && (
+                        <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
+                          {or.orderEPend}
+                        </span>
+                      )}
+                      {profil.title === "Commandes" &&
+                        sub.title === "Ventes" && (
+                          <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
+                            {or.orderSPend}
+                          </span>
+                        )}
+                      {profil.title === "Commandes" &&
+                        sub.title === "Achats" && (
+                          <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
+                            {or.orderBPend}
+                          </span>
+                        )}
                     </Link>
                   </Button>
                 ))}

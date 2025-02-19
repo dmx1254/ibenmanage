@@ -10,6 +10,7 @@ import {
   exchangeUpdateStatus,
   fiveRecentIbyOrders,
   getAllIbenOrdersCounts,
+  getPendingOrders,
   getRate,
   getServersBuyForCreate,
   sendAllUsersEmail,
@@ -127,6 +128,15 @@ export const changeAchatStatus = async (status: string, achatId: string) => {
 export async function sendEmailForAllUsers(subject: string, message: string) {
   try {
     const response = await sendAllUsersEmail(subject, message);
+    return parseStringify(response);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getPendingLengthOrders() {
+  try {
+    const response = await getPendingOrders();
     return parseStringify(response);
   } catch (error) {
     console.log(error);

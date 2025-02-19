@@ -687,3 +687,36 @@ export async function sendAllUsersEmail(subject: string, message: string) {
     return { errorMessage: "Échec de l'envoi des emails", error };
   }
 }
+
+export async function getPendingOrders() {
+  try {
+    const { BuyModel, ExchangeModel } = await goapiModels;
+    const { OrderModelIben } = await ibenModels;
+
+    const buyOrdersP = BuyModel.countDocuments({ status: "En attente" });
+
+    const exchangeOrdersP = ExchangeModel.countDocuments({
+      status: "En attente",
+    });
+
+    const sellOrders = OrderModelIben.countDocuments({ status: "En attente" });
+
+    const [bOrdersP, eOrdersP, sOrdersP] = await Promise.all([
+      buyOrdersP,
+      exchangeOrdersP,
+      sellOrders,
+    ]);
+
+    const orderBuyPending = JSON.parse(JSON.stringify(bOrdersP));
+    const orderExchangePending = JSON.parse(JSON.stringify(eOrdersP));
+    const orderSellPending = JSON.parse(JSON.stringify(sOrdersP));
+
+    return {
+      orderBPend: orderBuyPending || 0,
+      orderEPend: orderExchangePending || 0,
+      orderSPend: orderSellPending || 0,
+    };
+  } catch (error) {
+    console.log(error);
+  }
+}

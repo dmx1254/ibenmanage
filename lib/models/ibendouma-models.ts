@@ -70,6 +70,7 @@ async function initializeModels(): Promise<any> {
     category: string;
     server: string;
     qty: number;
+    bonus: number;
     amount: number;
     price: number;
     character: string;
@@ -279,6 +280,10 @@ async function initializeModels(): Promise<any> {
             type: Number,
             required: true,
           },
+          bonus: {
+            type: Number,
+            default: 0,
+          },
           price: { type: Number, required: true },
           character: {
             type: String,
@@ -293,7 +298,7 @@ async function initializeModels(): Promise<any> {
 
       status: {
         type: String,
-        default: "En attente...",
+        default: "En attente",
       },
       totalPrice: {
         type: Number,

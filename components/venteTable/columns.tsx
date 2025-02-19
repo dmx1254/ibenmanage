@@ -33,6 +33,7 @@ export const columns: ColumnDef<OrderSell>[] = [
       );
     },
     cell: ({ row }) => {
+      // console.log(row.original.products);
       return (
         <div className="w-full flex flex-col items-start gap-2 bg-dark-200 p-1.5 rounded">
           {row.original.products.map((p, i) => (
@@ -54,8 +55,14 @@ export const columns: ColumnDef<OrderSell>[] = [
               </div>
               <div className="flex flex-col items-start">
                 <span>Personnage</span>
-                <span className="font-bold">{p.character}M</span>
+                <span className="font-bold">{p.character}</span>
               </div>
+              {p.bonus && p.bonus > 0 && (
+                <div className="flex flex-col items-start">
+                  <span>Bonus</span>
+                  <span className="font-bold text-[#FFD147]">{p.bonus}M</span>
+                </div>
+              )}
             </div>
           ))}
           <div className="flex max-md:flex-col items-start gap-1">
@@ -106,12 +113,12 @@ export const columns: ColumnDef<OrderSell>[] = [
           <SeeOrderVente data={data} />
           <EmailDialog
             isShowText={true}
-            email={data.billing.email || data?.detailUser?.email}
+            email={data?.billing?.email || data?.detailUser?.email}
             lastnameS={
-              data.billing.lastname || data?.detailUser?.lastname || ""
+              data?.billing?.lastname || data?.detailUser?.lastname || ""
             }
             firstnameS={
-              data.billing.firstname || data?.detailUser?.firstname || ""
+              data?.billing?.firstname || data?.detailUser?.firstname || ""
             }
           />
           <OrderVenteDot data={data} />
