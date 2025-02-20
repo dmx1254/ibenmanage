@@ -392,6 +392,10 @@ input[type="number"] {
   appearance: textfield;
 }
 
+.scroll-thumb::-webkit-scrollbar {
+  display: none;
+}
+
 .react-datepicker,
 .react-datepicker__time,
 .react-datepicker__header,

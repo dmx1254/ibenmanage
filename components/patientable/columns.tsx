@@ -109,7 +109,7 @@ export const columns: ColumnDef<USERLOGINRESPONSE>[] = [
     id: "actions",
     header: () => <div className="pl-4">Actions</div>,
     cell: ({ row: { original: data } }) => {
-      console.log(data);
+      // console.log(data);
       return (
         <div className="flex gap-1 max-xl:ml-4">
           <div className="flex items-center gap-3">

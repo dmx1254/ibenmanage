@@ -201,8 +201,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                     }}
                   >
@@ -227,8 +226,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                     }}
                   >
@@ -253,8 +251,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -280,8 +277,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -307,8 +303,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -334,8 +329,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -361,8 +355,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}
@@ -388,8 +381,7 @@ export const WriteEmailTemplate: React.FC<EmailTemplateProps> = async ({
                       justifyContent: "center",
                       padding: "4px",
                       borderRadius: "9999px",
-                      border: "2px solid #45494e",
-                      backgroundColor: "#363A3D",
+
                       textDecoration: "none",
                       marginLeft: "2px",
                     }}

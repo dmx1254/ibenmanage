@@ -205,7 +205,7 @@ const CreateOrderAchat = ({
       >
         <FilePlus size={18} />
       </button>
-      <DialogContent className="w-full z-50 bg-dark-300 p-6 border-dark-500">
+      <DialogContent className="w-full max-w-xl z-50 bg-dark-300 p-6 border-dark-500">
         <div className="w-full overflow-y-scroll scroll-thumb">
           <div className="grid gap-4 py-4">
             <div className="grid grid-cols-2 gap-4">
