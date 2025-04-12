@@ -128,6 +128,76 @@ async function initializeModels(): Promise<any> {
     departement?: string;
   }
 
+  interface IMainting extends Document {
+    mainting: boolean;
+  }
+  enum GameStatus {
+    PENDING = "pending",
+    PAID = "paid",
+    CANCELLED = "cancelled",
+    PROCESSING = "processing",
+  }
+
+  enum GameType {
+    GAME = "game",
+    DOFUS = "dofus",
+  }
+
+  interface IGamer extends Document {
+    userId: string;
+    name: string;
+    items?: string;
+    orderNum: string;
+    status: GameStatus;
+    bonus?: number;
+    type: GameType;
+    amount: number;
+    price: number;
+    paymentMethod: string;
+    cur: string;
+    valcurrency: number;
+    totalPrice: number;
+    orderIdPaid?: string;
+  }
+
+  const maintingSchema = new Schema({
+    mainting: {
+      type: Boolean,
+      default: false,
+    },
+  });
+
+  // Création du schéma Mongoose
+  const gamerSchema = new Schema(
+    {
+      userId: { type: String, required: true },
+      orderNum: { type: String, required: true },
+      name: { type: String, required: true },
+      items: { type: String, required: false },
+      status: {
+        type: String,
+        enum: Object.values(GameStatus),
+        default: GameStatus.PENDING,
+        required: true,
+      },
+      type: {
+        type: String,
+        enum: Object.values(GameType),
+        default: GameType.GAME,
+        required: true,
+      },
+      amount: { type: Number, required: true },
+      price: { type: Number, required: true },
+      paymentMethod: { type: String, required: true },
+      totalPrice: { type: Number, required: true },
+      cur: { type: String, required: true },
+      valcurrency: { type: Number, required: true },
+      orderIdPaid: { type: String, required: false },
+      bonus: { type: Number, required: false },
+    },
+    { timestamps: true }
+  );
+
   const paymentMethodSchema = new Schema({
     userId: {
       type: String,
@@ -461,6 +531,11 @@ async function initializeModels(): Promise<any> {
     ibendDB.model<IPaymentMethod>("payment", paymentMethodSchema);
   const VisitModel =
     ibendDB.models.visit || ibendDB.model<Visit>("visit", visitSchema);
+  const GameModel =
+    ibendDB.models.game || ibendDB.model<IGamer>("game", gamerSchema);
+  const MaintingModel =
+    ibendDB.models.maintenance ||
+    ibendDB.model<IMainting>("maintenance", maintingSchema);
 
   return {
     ServerModelIben,
@@ -473,6 +548,8 @@ async function initializeModels(): Promise<any> {
     UserIbenModel,
     UserPaymentModel,
     VisitModel,
+    GameModel,
+    MaintingModel,
   };
 }
 

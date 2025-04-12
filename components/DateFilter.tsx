@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Calendar as CalendarIcon, ChevronDown } from "lucide-react";
 import { useSearchParams, usePathname, useRouter } from "next/navigation";
-import { format, parse } from "date-fns";
-import { da, fr } from "date-fns/locale";
+import { fr } from "date-fns/locale";
 import { cn, convertDateForSearchParams, customFilterDate } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
 import {

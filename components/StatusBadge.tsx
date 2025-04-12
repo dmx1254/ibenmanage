@@ -15,13 +15,17 @@ const StatusBadge = ({
     <div
       className={clsx("status-badge", {
         "bg-green-600":
-          !isOrder && (status === "Payée" || status === "Terminée"),
-        "bg-yellow-900": !isOrder && status === "En attente",
-        "bg-red-600": !isOrder && status === "Annulée",
+          !isOrder &&
+          (status === "Payée" || status === "Terminée" || status === "paid"),
+        "bg-yellow-900":
+          (!isOrder && status === "En attente") || status === "pending",
+        "bg-red-600":
+          (!isOrder && status === "Annulée") || status === "cancelled",
         "bg-blue-600":
           !isOrder &&
           (status === "En cours de paiement" ||
-            status === "En cours de paiement"),
+            status === "En cours de paiement" ||
+            status === "processing"),
       })}
     >
       {!isOrder && (
@@ -35,12 +39,14 @@ const StatusBadge = ({
       )}
       <p
         className={clsx("status-12-semibold capitalize", {
-          "text-green-500": status === "Payée" || status === "Terminée",
-          "text-yellow-500": status === "En attente",
-          "text-red-500": status === "Annulée",
+          "text-green-500":
+            status === "Payée" || status === "Terminée" || status === "paid",
+          "text-yellow-500": status === "En attente" || status === "pending",
+          "text-red-500": status === "Annulée" || status === "cancelled",
           "text-blue-500":
             status === "En Cours de payment" ||
-            status === "En cours de paiement",
+            status === "En cours de paiement" ||
+            status === "processing",
           "-ml-4": isOrder,
         })}
       >

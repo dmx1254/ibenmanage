@@ -11,7 +11,7 @@ interface RootLayoutProps {
 export default async function RootLayout({ children }: RootLayoutProps) {
   return (
     <AuthProvider>
-      <main className="w-full flex bg-dark-300">
+      <main className="w-full flex bg-dark-300 text-gray-300">
         <Sidebar />
         <section className="w-full">
           <div className="flex bg-dark-300 w-full border-b border-dark-400 sticky right-0 p-3 top-0 bottom-8 items-center justify-between space-x-4 z-30">

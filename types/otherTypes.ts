@@ -88,6 +88,11 @@ export const sidebarInfo: profilePerso[] = [
         title: "Echanges",
         slug: "/dashboard/commandes/echanges",
       },
+      {
+        id: "kapbgwe62f",
+        title: "Jeux",
+        slug: "/dashboard/commandes/games",
+      },
     ],
   },
   {
