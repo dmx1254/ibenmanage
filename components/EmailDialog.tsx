@@ -288,7 +288,7 @@ const EmailDialog = ({
         </Button>
       )}
 
-      <DialogContent className="sm:max-w-4xl max-h-[90vh] overflow-y-auto bg-dark-400 border-dark-500">
+      <DialogContent className="sm:max-w-4xl max-h-[90vh] text-gray-300 overflow-y-auto bg-dark-400 border-dark-500">
         <DialogHeader>
           <DialogTitle>Nouveau Message</DialogTitle>
         </DialogHeader>
@@ -468,7 +468,7 @@ const EmailDialog = ({
                 <SelectTrigger className="w-[180px] border-dark-500 bg-dark-300 outline-none focus:outline-none focus:ring-0 focus:ring-offset-0">
                   <SelectValue placeholder="Priorité" />
                 </SelectTrigger>
-                <SelectContent className="bg-dark-400 border-dark-500">
+                <SelectContent className="bg-dark-400 text-gray-300 border-dark-500">
                   <SelectItem value="low">Basse</SelectItem>
                   <SelectItem value="medium">Moyenne</SelectItem>
                   <SelectItem value="high">Haute</SelectItem>

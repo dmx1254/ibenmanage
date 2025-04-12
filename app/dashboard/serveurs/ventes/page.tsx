@@ -18,9 +18,10 @@ const ServerVentePage = async ({
     page?: number;
   };
 }) => {
-  const servername = searchParams?.servername || "";
-  const category = searchParams?.category || "";
-  const currentPageStr = searchParams?.page || 1;
+  const dataParams = await searchParams;
+  const servername = dataParams?.servername || "";
+  const category = dataParams?.category || "";
+  const currentPageStr = dataParams?.page || 1;
   const currentPage = Number(currentPageStr);
   const serversVente = await getAllServersVenteList(
     servername,

@@ -24,11 +24,11 @@ const OrderVenteDot = ({ data }: { data: OrderSell }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
-          className="bg-dark-300 z-50 border-dark-500 shadow-lg"
+          className="bg-dark-300 text-gray-300 z-50 border-dark-500 shadow-lg"
         >
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            className="cursor-pointer transition-transform hover:opacity-80"
+            className="cursor-pointer text-gray-300 transition-transform hover:opacity-80"
             onClick={() => {
               const pay =
                 (data.billing.lastname || "N/A") +

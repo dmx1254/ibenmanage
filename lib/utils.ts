@@ -94,8 +94,8 @@ export interface ServerBuy {
   serverStatus: string;
   serverPrice: number;
   serverMinQty: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface ServerSell {
@@ -105,8 +105,8 @@ export interface ServerSell {
   serverStatus: string;
   serverPriceDh: number;
   serverMinQty: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface CURRENCY {
@@ -121,8 +121,8 @@ export interface ServerExchange {
   serverStatus: string;
   serverPriceDh: number;
   serverMinQty: number;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface CurrencyItem {
@@ -466,3 +466,25 @@ export interface IbyGraph {
   name: string;
   total: number;
 }
+
+
+export interface IGamerResp {
+  _id: string;
+  userId: string;
+  name: string;
+  items?: string;
+  orderNum: string;
+  status: string;
+  bonus?: number;
+  type: string;
+  amount: number;
+  price: number;
+  paymentMethod: string;
+  cur: string;
+  valcurrency: number;
+  totalPrice: number;
+  orderIdPaid?: string;
+  createdAt: string;
+  updatedAt: string;
+}
+

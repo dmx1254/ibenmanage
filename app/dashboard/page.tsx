@@ -54,7 +54,8 @@ export default async function DashboardPage({
     getPatientDevicesTypes(),
     ibyOrdersGraph(),
   ]);
-  const isAdmin = !!searchParams.isAdmin;
+  const data = await searchParams;
+  const isAdmin = !!data.isAdmin;
 
   return (
     <>

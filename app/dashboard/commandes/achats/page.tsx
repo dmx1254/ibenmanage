@@ -7,7 +7,6 @@ import { getAllOrdersAchatList } from "@/lib/api/appointment";
 import LatestInvoicesSkeleton from "@/components/skelettons/skeletons";
 import DateFilter from "@/components/DateFilter";
 import ScheduleSearch from "@/components/ScheduleSearch";
-import DeAchat from "@/components/DeAchat";
 
 const AchatPage = async ({
   searchParams,
@@ -21,11 +20,13 @@ const AchatPage = async ({
   };
 }) => {
   //   const appointments = await getRecentAppointmentList();
-  const orderId = searchParams?.orderId || "";
-  const startDate = searchParams?.startDate || "";
-  const endDate = searchParams?.endDate || "";
-  const status = searchParams?.status || "";
-  const currentPageStr = searchParams?.page || 1;
+
+  const orderParams = await searchParams;
+  const orderId = orderParams?.orderId || "";
+  const startDate = orderParams?.startDate || "";
+  const endDate = orderParams?.endDate || "";
+  const status = orderParams?.status || "";
+  const currentPageStr = orderParams?.page || 1;
   const currentPage = Number(currentPageStr);
   const ordersAchat = await getAllOrdersAchatList(
     orderId,

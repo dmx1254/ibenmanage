@@ -212,9 +212,8 @@ export async function getAllServersVenteList(
   }
 
   try {
-    const totalDocuments = await ServerModelIben.countDocuments(
-      matchConditions
-    );
+    const totalDocuments =
+      await ServerModelIben.countDocuments(matchConditions);
 
     const allServers = await ServerModelIben.aggregate([
       {
@@ -301,17 +300,17 @@ export async function getAllOrdersVenteList(
 
     const payedCountResult = OrderModelIben.countDocuments({
       ...matchConditions,
-      status: "Terminée",
+      status: "paid",
     });
 
     const pendingCountResult = OrderModelIben.countDocuments({
       ...matchConditions,
-      status: "En attente",
+      status: "pending",
     });
 
     const cancelledCountResult = OrderModelIben.countDocuments({
       ...matchConditions,
-      status: "Annulée",
+      status: "cancelled",
     });
 
     const [orders, payedCountPa, pendingCountPa, cancelledCountPa] =
@@ -439,6 +438,105 @@ export async function getAllOrdersEchangeList(
   }
 }
 
+//GAMES PAGE
+
+export async function getAllOrdersGameList(
+  orderId: string,
+  startDate: string,
+  endDate: string,
+  status: string,
+
+  currentPage: number
+) {
+  const { GameModel } = await ibenModels;
+  let itemsPerPage: number = 15;
+  const offset = (currentPage - 1) * itemsPerPage;
+
+  const matchConditions: any = {};
+
+  if (orderId && orderId.trim() !== "") {
+    matchConditions.orderNum = { $regex: orderId, $options: "i" };
+  }
+
+  if (status && status.trim() !== "") {
+    matchConditions.status = { $regex: status, $options: "i" };
+  }
+
+  if (startDate || endDate) {
+    matchConditions.createdAt = {};
+
+    if (startDate) {
+      const parsedStartDate = parseDate(startDate);
+      matchConditions.createdAt.$gte = startOfDay(parsedStartDate);
+    }
+
+    if (endDate) {
+      const parsedEndDate = parseDate(endDate);
+      matchConditions.createdAt.$lte = endOfDay(parsedEndDate);
+    }
+  }
+
+  try {
+    const totalDocuments = await GameModel.countDocuments(matchConditions);
+
+    const allOrdersGameResult = GameModel.aggregate([
+      {
+        $match: matchConditions,
+      },
+      {
+        $sort: { createdAt: -1 },
+      },
+      {
+        $skip: offset,
+      },
+      {
+        $limit: itemsPerPage,
+      },
+    ]);
+
+    const payedCountResult = GameModel.countDocuments({
+      ...matchConditions,
+      status: "paid",
+    });
+
+    const pendingCountResult = GameModel.countDocuments({
+      ...matchConditions,
+      status: "pending",
+    });
+
+    const cancelledCountResult = GameModel.countDocuments({
+      ...matchConditions,
+      status: "cancelled",
+    });
+
+    const [games, payedCountPa, pendingCountPa, cancelledCountPa] =
+      await Promise.all([
+        allOrdersGameResult,
+        payedCountResult,
+        pendingCountResult,
+        cancelledCountResult,
+      ]);
+
+    const allGames = JSON.parse(JSON.stringify(games));
+    const payedCount = JSON.parse(JSON.stringify(payedCountPa));
+    const pendingCount = JSON.parse(JSON.stringify(pendingCountPa));
+    const cancelledCount = JSON.parse(JSON.stringify(cancelledCountPa));
+    const totalPagesGet = JSON.parse(JSON.stringify(totalDocuments));
+
+    const totalPages = Math.ceil(totalPagesGet / itemsPerPage);
+
+    return {
+      allGames,
+      payedCount,
+      pendingCount,
+      cancelledCount,
+      totalPages,
+    };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
 export async function createRate(rate: number) {
   try {
     const { RateModel } = await goapiModels;
@@ -480,6 +578,47 @@ export async function getRate() {
   }
 }
 
+export async function getMaintingOneStatus() {
+  try {
+    const { MaintingModel } = await ibenModels;
+    const mainting = await MaintingModel.find();
+    return mainting;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
+export async function createMaintingStatus() {
+  try {
+    const { MaintingModel } = await ibenModels;
+    await MaintingModel.create({ mainting: false });
+    return { message: "Status mis à jour avec succès" };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
+export async function updateMainting(mainting: boolean, maintingId: string) {
+  try {
+    const { MaintingModel } = await ibenModels;
+    await MaintingModel.findByIdAndUpdate(
+      maintingId,
+      {
+        $set: {
+          mainting,
+        },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    return { message: "Status mis à jour avec succès" };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
 export async function achatIbyUpdateStatus(status: string, achatId: string) {
   try {
     const { BuyModel } = await goapiModels;
@@ -506,6 +645,28 @@ export async function exchangeUpdateStatus(status: string, echangeId: string) {
     const { ExchangeModel } = await goapiModels;
     await ExchangeModel.findByIdAndUpdate(
       echangeId,
+      {
+        $set: {
+          status,
+        },
+      },
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+
+    return { message: "Status mis à jour avec succès" };
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+}
+
+export async function gameUpdateStatus(status: string, gameId: string) {
+  try {
+    const { GameModel } = await ibenModels;
+    await GameModel.findByIdAndUpdate(
+      gameId,
       {
         $set: {
           status,
@@ -691,7 +852,7 @@ export async function sendAllUsersEmail(subject: string, message: string) {
 export async function getPendingOrders() {
   try {
     const { BuyModel, ExchangeModel } = await goapiModels;
-    const { OrderModelIben } = await ibenModels;
+    const { OrderModelIben, GameModel } = await ibenModels;
 
     const buyOrdersP = BuyModel.countDocuments({ status: "En attente" });
 
@@ -699,22 +860,27 @@ export async function getPendingOrders() {
       status: "En attente",
     });
 
-    const sellOrders = OrderModelIben.countDocuments({ status: "En attente" });
+    const sellOrders = OrderModelIben.countDocuments({ status: "pending" });
 
-    const [bOrdersP, eOrdersP, sOrdersP] = await Promise.all([
+    const gameOrdersP = GameModel.countDocuments({ status: "pending" });
+
+    const [bOrdersP, eOrdersP, sOrdersP, gOrdersP] = await Promise.all([
       buyOrdersP,
       exchangeOrdersP,
       sellOrders,
+      gameOrdersP,
     ]);
 
     const orderBuyPending = JSON.parse(JSON.stringify(bOrdersP));
     const orderExchangePending = JSON.parse(JSON.stringify(eOrdersP));
     const orderSellPending = JSON.parse(JSON.stringify(sOrdersP));
+    const orderGamePending = JSON.parse(JSON.stringify(gOrdersP));
 
     return {
       orderBPend: orderBuyPending || 0,
       orderEPend: orderExchangePending || 0,
       orderSPend: orderSellPending || 0,
+      orderGPend: orderGamePending || 0,
     };
   } catch (error) {
     console.log(error);

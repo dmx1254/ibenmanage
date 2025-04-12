@@ -21,15 +21,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { changeEchangeStatus } from "@/lib/actions/appointment.actions";
+import { changeGameStatus } from "@/lib/actions/appointment.actions";
 
 const UpdateChangeStatus = ({
   status,
-  echangeId,
+  gameId,
   orderId,
 }: {
   status: string;
-  echangeId: string;
+  gameId: string;
   orderId: string;
 }) => {
   const [newStatus, setNewStatus] = useState<string>(status);
@@ -39,7 +39,7 @@ const UpdateChangeStatus = ({
   const handleUpdateExchangeStatus = async () => {
     try {
       setIsLoading(true);
-      const response = await changeEchangeStatus(newStatus, echangeId);
+      const response = await changeGameStatus(newStatus, gameId);
       if (response) {
         toast.success(response.message, {
           style: {
@@ -63,13 +63,13 @@ const UpdateChangeStatus = ({
           Changer le status
         </button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[400px] bg-dark-300 border-dark-500">
+      <DialogContent className="sm:max-w-[400px] bg-dark-300 text-gray-300 border-dark-500">
         <DialogHeader>
           <DialogTitle className="text-white text-base rounded">
             <div className="flex items-center space-x-3">
               <GamepadIcon className="text-orange-400" size={24} />
               <DialogTitle className="text-lg font-bold text-white">
-                Code d'echange #{orderId}
+                Numéro de commande #{orderId}
               </DialogTitle>
             </div>
           </DialogTitle>
@@ -87,10 +87,11 @@ const UpdateChangeStatus = ({
               <SelectTrigger className="w-full px-4 py-5 border-dark-500 rounded-md shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                 <SelectValue placeholder="Sélectionnez votre quartier" />
               </SelectTrigger>
-              <SelectContent className="bg-dark-400 border-dark-500">
-                <SelectItem value="En attente">En attente</SelectItem>
-                <SelectItem value="Terminée">Terminée</SelectItem>
-                <SelectItem value="Annulée">Annulée</SelectItem>
+              <SelectContent className="bg-dark-400 text-gray-300 border-dark-500">
+                <SelectItem value="pending">En attente</SelectItem>
+                <SelectItem value="paid">Payée</SelectItem>
+                <SelectItem value="processing">En cours</SelectItem>
+                <SelectItem value="cancelled">Annulée</SelectItem>
               </SelectContent>
             </Select>
           </div>

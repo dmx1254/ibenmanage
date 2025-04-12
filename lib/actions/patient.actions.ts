@@ -113,6 +113,16 @@ export const deleteOrderEchange = async (echangeId: string) => {
   }
 };
 
+export const deleteOrderGame = async (gameId: string) => {
+  try {
+    const orderDeleted = await deleteOneOrderGame(gameId);
+    revalidatePath("/dashboard/commandes/games");
+    return parseStringify(orderDeleted);
+  } catch (error: any) {
+    throw new Error(error);
+  }
+};
+
 export const serverAchatUp = async (serverId: string, server: UpdateSAchat) => {
   try {
     const serverUp = await updateServerAchat(serverId, server);

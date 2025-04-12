@@ -52,7 +52,7 @@ export function NavUser({
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
-        className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg bg-dark-400 border-dark-500"
+        className="w-[--radix-dropdown-menu-trigger-width] text-gray-300 min-w-56 rounded-lg bg-dark-400 border-dark-500"
         side="right"
         align="end"
         sideOffset={4}
@@ -80,7 +80,7 @@ export function NavUser({
         <DropdownMenuItem asChild>
           <button
             onClick={logout}
-            className="flex items-center gap-2 cursor-pointer"
+            className="flex items-center gap-2 text-red-500 cursor-pointer"
           >
             <LogOut />
             Log out

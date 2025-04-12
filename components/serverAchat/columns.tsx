@@ -11,7 +11,6 @@ import clsx from "clsx";
 import DeleteServerAchat from "../serverAchatAction/DeleteServerAchat";
 import UpdateServerAchat from "../serverAchatAction/UpdateServerAchat";
 import OrderAchatDot from "../serverAchatAction/OrderAchatDot";
-import AddNewServerAchat from "../serverAchatAction/AddNewServerAchat";
 
 export const columns: ColumnDef<ServerSell>[] = [
   {

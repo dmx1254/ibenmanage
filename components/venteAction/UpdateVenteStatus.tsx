@@ -75,7 +75,7 @@ const UpdateVenteStatus = ({
             </div>
           </DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 text-gray-300">
           <div className="flex flex-col items-start gap-3">
             <Label htmlFor="rate" className="text-right">
               Nouveau status
@@ -88,13 +88,11 @@ const UpdateVenteStatus = ({
               <SelectTrigger className="w-full px-4 py-5 border-dark-500 rounded-md shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                 <SelectValue placeholder="Sélectionnez votre quartier" />
               </SelectTrigger>
-              <SelectContent className="bg-dark-400 border-dark-500">
-                <SelectItem value="En attente">En attente</SelectItem>
-                <SelectItem value="En Cours de payment">
-                  En Cours de payment
-                </SelectItem>
-                <SelectItem value="Terminée">Terminée</SelectItem>
-                <SelectItem value="Annulée">Annulée</SelectItem>
+              <SelectContent className="bg-dark-400 text-gray-300 border-dark-500">
+                <SelectItem value="pending">En attente</SelectItem>
+                <SelectItem value="processing">En cours</SelectItem>
+                <SelectItem value="paid">Payée</SelectItem>
+                <SelectItem value="cancelled">Annulée</SelectItem>
               </SelectContent>
             </Select>
           </div>

@@ -24,11 +24,12 @@ const ExchangePage = async ({
   };
 }) => {
   //   const appointments = await getRecentAppointmentList();
-  const orderId = searchParams?.orderId || "";
-  const startDate = searchParams?.startDate || "";
-  const endDate = searchParams?.endDate || "";
-  const status = searchParams?.status || "";
-  const currentPageStr = searchParams?.page || 1;
+  const orderParams = await searchParams;
+  const orderId = orderParams?.orderId || "";
+  const startDate = orderParams?.startDate || "";
+  const endDate = orderParams?.endDate || "";
+  const status = orderParams?.status || "";
+  const currentPageStr = orderParams?.page || 1;
   const currentPage = Number(currentPageStr);
   const ordersAchat = await getAllOrdersEchangeList(
     orderId,

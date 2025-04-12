@@ -21,11 +21,13 @@ const PatientPage = async ({
     page?: number;
   };
 }) => {
-  const email = searchParams?.email || "";
-  const userStatus = searchParams?.userStatus || "";
-  const startDate = searchParams?.startDate || "";
-  const endDate = searchParams?.endDate || "";
-  const currentPageStr = searchParams?.page || 1;
+
+  const dataParams = await searchParams;
+  const email = dataParams?.email || "";
+  const userStatus = dataParams?.userStatus || "";
+  const startDate = dataParams?.startDate || "";
+  const endDate = dataParams?.endDate || "";
+  const currentPageStr = dataParams?.page || 1;
   const currentPage = Number(currentPageStr);
   const data = await getCustomers(email, startDate, endDate, currentPage, userStatus);
 

@@ -18,7 +18,8 @@ const Sidebar = () => {
     orderBPend: number;
     orderEPend: number;
     orderSPend: number;
-  }>({ orderBPend: 0, orderEPend: 0, orderSPend: 0 });
+    orderGPend: number;
+  }>({ orderBPend: 0, orderEPend: 0, orderSPend: 0, orderGPend: 0 });
 
   // console.log(or);
 
@@ -96,21 +97,30 @@ const Sidebar = () => {
                       href={sub.slug}
                     >
                       {sub.title}
-                      {sub.title === "Echanges" && (
+                      {sub.title === "Echanges" && or.orderEPend > 0 && (
                         <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
                           {or.orderEPend}
                         </span>
                       )}
                       {profil.title === "Commandes" &&
-                        sub.title === "Ventes" && (
+                        sub.title === "Ventes" &&
+                        or.orderSPend > 0 && (
                           <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
                             {or.orderSPend}
                           </span>
                         )}
                       {profil.title === "Commandes" &&
-                        sub.title === "Achats" && (
+                        sub.title === "Achats" &&
+                        or.orderBPend > 0 && (
                           <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
                             {or.orderBPend}
+                          </span>
+                        )}
+                      {profil.title === "Commandes" &&
+                        sub.title === "Jeux" &&
+                        or.orderGPend > 0 && (
+                          <span className="absolute flex items-center justify-center h-5 w-5 font-bold text-xs rounded-full text-center bg-[#FFD147] text-dark-500 top-[4%] left-[70%]">
+                            {or.orderGPend}
                           </span>
                         )}
                     </Link>

@@ -86,8 +86,8 @@ export interface ExchangeKamas {
   characterToReceive: string;
   codeToExchange: string;
   status: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Orderbuy {
@@ -106,8 +106,8 @@ export interface Orderbuy {
   paymentInfoDetails: string;
   currencymethod: string;
   status: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface Product {
@@ -136,8 +136,8 @@ export interface OrderSell {
   valCurency: number;
   status: string;
   address: string;
-  createdAt: Date;
-  updatedAt: Date;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface UserProfile {

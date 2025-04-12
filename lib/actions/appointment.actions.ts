@@ -5,15 +5,19 @@ import { revalidatePath } from "next/cache";
 import {
   AchatGoUpdateStatus,
   createAnOrderAchat,
+  createMaintingStatus,
   createRate,
   deleteAllBuyOrders,
   exchangeUpdateStatus,
   fiveRecentIbyOrders,
+  gameUpdateStatus,
   getAllIbenOrdersCounts,
+  getMaintingOneStatus,
   getPendingOrders,
   getRate,
   getServersBuyForCreate,
   sendAllUsersEmail,
+  updateMainting,
   updateRate,
   venteIbenUpdateStatus,
 } from "../api/appointment";
@@ -83,12 +87,53 @@ export const getEchangeRate = async () => {
   }
 };
 
+export const getMaintingStatus = async () => {
+  try {
+    const response = await getMaintingOneStatus();
+    return parseStringify(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const createANewMainting = async () => {
+  try {
+    const response = await createMaintingStatus();
+    return parseStringify(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const updateMaintingStatus = async (
+  mainting: boolean,
+  maintingId: string
+) => {
+  try {
+    const response = await updateMainting(mainting, maintingId);
+    revalidatePath("/dashboard/commandes/games");
+    return parseStringify(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const changeEchangeStatus = async (
   status: string,
   echangeId: string
 ) => {
   try {
     const response = await exchangeUpdateStatus(status, echangeId);
+    revalidatePath("/dashboard/commandes/echanges");
+    return parseStringify(response);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+export const changeGameStatus = async (status: string, gameId: string) => {
+  try {
+    const response = await gameUpdateStatus(status, gameId);
     revalidatePath("/dashboard/commandes/echanges");
     return parseStringify(response);
   } catch (error) {

@@ -378,7 +378,6 @@ export async function deBanOneUser(userId: string) {
   }
 }
 
-
 export async function deleteOneOrderEchange(echangeId: string) {
   if (!isValidObjectId(echangeId)) {
     throw new Error("Invalid echange ID");
@@ -389,6 +388,19 @@ export async function deleteOneOrderEchange(echangeId: string) {
     return orderDeleted;
   } catch (error: any) {
     throw new Error(`Error to deleting echange: ${error.message}`);
+  }
+}
+
+export async function deleteOneOrderGame(gameId: string) {
+  if (!isValidObjectId(gameId)) {
+    throw new Error("Invalid game ID");
+  }
+  try {
+    const { GameModel } = await goapiModels;
+    const orderDeleted = await GameModel.findByIdAndDelete(gameId);
+    return orderDeleted;
+  } catch (error: any) {
+    throw new Error(`Error to deleting game: ${error.message}`);
   }
 }
 
