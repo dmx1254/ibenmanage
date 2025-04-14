@@ -427,7 +427,7 @@ const EmailDialog = ({
                 </Button>
 
                 <DropdownMenu>
-                  <DropdownMenuTrigger className="border-none outline-none">
+                  <DropdownMenuTrigger asChild className="border-none outline-none">
                     <Button
                       variant="ghost"
                       size="icon"

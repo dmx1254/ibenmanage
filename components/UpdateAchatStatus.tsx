@@ -74,7 +74,7 @@ const UpdateAchatStatus = ({
             </div>
           </DialogTitle>
         </DialogHeader>
-        <div className="grid gap-4 py-4">
+        <div className="grid gap-4 py-4 text-white">
           <div className="flex flex-col items-start gap-3">
             <Label htmlFor="rate" className="text-right">
               Nouveau status
@@ -84,10 +84,10 @@ const UpdateAchatStatus = ({
               value={newStatus}
               onValueChange={(value) => setNewStatus(value)}
             >
-              <SelectTrigger className="w-full px-4 py-5 border-dark-500 rounded-md shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0">
+              <SelectTrigger className="w-full text-white px-4 py-5 border-dark-500 rounded-md shadow-none focus:ring-0 focus:ring-offset-0 focus-visible:ring-0 focus-visible:ring-offset-0">
                 <SelectValue placeholder="Sélectionnez votre quartier" />
               </SelectTrigger>
-              <SelectContent className="bg-dark-400 border-dark-500">
+              <SelectContent className="bg-dark-400 text-white border-dark-500">
                 <SelectItem value="En attente">En attente</SelectItem>
                 <SelectItem value="En Cours de payment">
                   En Cours de payment

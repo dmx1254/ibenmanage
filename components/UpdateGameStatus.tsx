@@ -21,15 +21,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "./ui/select";
-import { changeEchangeStatus } from "@/lib/actions/appointment.actions";
+import { changeGameStatus } from "@/lib/actions/appointment.actions";
 
-const UpdateChangeStatus = ({
+const UpdateGameStatus = ({
   status,
-  echangeId,
+  gameId,
   orderId,
 }: {
   status: string;
-  echangeId: string;
+  gameId: string;
   orderId: string;
 }) => {
   const [newStatus, setNewStatus] = useState<string>(status);
@@ -39,7 +39,7 @@ const UpdateChangeStatus = ({
   const handleUpdateExchangeStatus = async () => {
     try {
       setIsLoading(true);
-      const response = await changeEchangeStatus(newStatus, echangeId);
+      const response = await changeGameStatus(newStatus, gameId);
       if (response) {
         toast.success(response.message, {
           style: {
@@ -88,12 +88,10 @@ const UpdateChangeStatus = ({
                 <SelectValue placeholder="Sélectionnez votre quartier" />
               </SelectTrigger>
               <SelectContent className="bg-dark-400 text-gray-300 border-dark-500">
-                <SelectItem value="En attente">En attente</SelectItem>
-                <SelectItem value="Terminée">Terminée</SelectItem>
-                <SelectItem value="En cours de paiement">
-                  En cours de paiement
-                </SelectItem>
-                <SelectItem value="Annulée">Annulée</SelectItem>
+                <SelectItem value="pending">En attente</SelectItem>
+                <SelectItem value="paid">Payée</SelectItem>
+                <SelectItem value="processing">En cours</SelectItem>
+                <SelectItem value="cancelled">Annulée</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -116,4 +114,4 @@ const UpdateChangeStatus = ({
   );
 };
 
-export default UpdateChangeStatus;
+export default UpdateGameStatus;

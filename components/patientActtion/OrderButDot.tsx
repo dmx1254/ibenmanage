@@ -24,9 +24,9 @@ const OrderButDot = ({ data }: { data: Orderbuy }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
-          className="bg-dark-300 z-50 border-dark-500 shadow-lg"
+          className="bg-dark-300 z-50 text-white border-dark-500 shadow-lg"
         >
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel className="text-white">Actions</DropdownMenuLabel>
           <DropdownMenuItem
             className="cursor-pointer transition-transform hover:opacity-80"
             onClick={() => {

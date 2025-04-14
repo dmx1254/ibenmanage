@@ -24,11 +24,11 @@ const EchangeDot = ({ data }: { data: ExchangeKamas }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent
           align="end"
-          className="bg-dark-300 z-50 border-dark-500 shadow-lg"
+          className="bg-dark-300 z-50 text-white border-dark-500 shadow-lg"
         >
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            className="cursor-pointer transition-transform hover:opacity-80"
+            className="cursor-pointer text-white transition-transform hover:opacity-80"
             onClick={() => {
               navigator.clipboard.writeText(data.codeToExchange);
               toast.success("Code d'echange copié dans la presse papier", {
@@ -40,7 +40,7 @@ const EchangeDot = ({ data }: { data: ExchangeKamas }) => {
               });
             }}
           >
-            Copier le code d'echange
+            Copier le code d&apos;echange
           </DropdownMenuItem>
           <UpdateChangeStatus
             echangeId={data._id}

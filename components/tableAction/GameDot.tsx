@@ -9,8 +9,8 @@ import {
 } from "../ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
 import { toast } from "sonner";
-import UpdateChangeStatus from "../UpdateChangeStatus";
 import { IGamerResp } from "@/lib/utils";
+import UpdateGameStatus from "../UpdateGameStatus";
 
 const GameDot = ({ data }: { data: IGamerResp }) => {
   return (
@@ -42,7 +42,7 @@ const GameDot = ({ data }: { data: IGamerResp }) => {
           >
             Copier le numéro de commande
           </DropdownMenuItem>
-          <UpdateChangeStatus
+          <UpdateGameStatus
             gameId={data._id}
             status={data.status}
             orderId={data.orderNum}
