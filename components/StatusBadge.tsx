@@ -11,6 +11,7 @@ const StatusBadge = ({
   status: string;
   isOrder?: boolean;
 }) => {
+  console.log("status: ", status);
   return (
     <div
       className={clsx("status-badge", {
@@ -25,6 +26,9 @@ const StatusBadge = ({
           !isOrder &&
           (status === "En cours de paiement" ||
             status === "En cours de paiement" ||
+            status === "En cours de payment" ||
+            status === "En Cours de payment" ||
+            status === "En Cours De Paiement" ||
             status === "processing"),
       })}
     >
@@ -46,6 +50,9 @@ const StatusBadge = ({
           "text-blue-500":
             status === "En Cours de payment" ||
             status === "En cours de paiement" ||
+            status === "En cours de payment" ||
+            status === "En Cours de payment" ||
+            status === "En Cours De Paiement" ||
             status === "processing",
           "-ml-4": isOrder,
         })}
