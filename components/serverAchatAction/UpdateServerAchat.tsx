@@ -28,6 +28,7 @@ const UpdateServerAchat = ({
     serverCategory: data.serverCategory,
     serverPriceDh: Number(data.serverPriceDh),
     serverStatus: data.serverStatus,
+    rate: data.rate || 1,
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
@@ -80,6 +81,8 @@ const UpdateServerAchat = ({
               className={clsx("text-14-medium p-2 rounded-[6px] inline-flex", {
                 "bg-green-600 text-[#24AE7C]":
                   data.serverStatus === "Disponible",
+                "bg-blue-600 text-[#3b82f6]":
+                  data.serverStatus === "Vendre rapidement",
                 "bg-red-600 text-[#FF4F4E]":
                   data.serverStatus === "Stock complet",
               })}
@@ -150,6 +153,21 @@ const UpdateServerAchat = ({
                     <span className="absolute top-[53%] left-[90%]">DH</span>
                   </div>
                 )}
+                {(type === "price" || !type) && (
+                  <div className="mt-4 relative">
+                    <Label htmlFor="rate">Taux de change</Label>
+                    <Input
+                      type="number"
+                      value={formdata.rate}
+                      name="rate"
+                      id="rate"
+                      onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                        handleChangeFormdata("rate", e.target.value)
+                      }
+                      className="bg-transparent mt-2 border-dark-500 text-white/80"
+                    />
+                  </div>
+                )}
                 {(type === "status" || !type) && (
                   <div className="w-full mt-4 md:ml-4">
                     <Label htmlFor="serverStatus">Status</Label>
@@ -164,6 +182,7 @@ const UpdateServerAchat = ({
                     >
                       <option value="Stock complet">Stock complet</option>
                       <option value="Disponible">Disponible</option>
+                      <option value="Vendre rapidement">Vendre rapidement</option>
                     </select>
                   </div>
                 )}

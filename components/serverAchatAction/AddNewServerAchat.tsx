@@ -23,6 +23,7 @@ const AddNewServerAchat = () => {
     serverPriceDh: 0,
     serverMinQty: 1000000,
     serverStatus: "Disponible",
+    rate: 1,
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const handleChangeFormdata = (name: string, value: string | number) => {
@@ -132,6 +133,20 @@ const AddNewServerAchat = () => {
                   />
                   <span className="absolute top-[53%] left-[90%]">DH</span>
                 </div>
+                <div className="mt-4 relative">
+                  <Label htmlFor="rate">Taux de change</Label>
+                  <Input
+                    type="number"
+                    value={formdata.rate}
+                    name="rate"
+                    id="rate"
+                    placeholder={`${formdata.rate}`}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) =>
+                      handleChangeFormdata("rate", e.target.value)
+                    }
+                    className="bg-transparent mt-2 border-dark-500 text-white/80"
+                  />
+                </div>
                 <div className="w-full mt-4 md:ml-4">
                   <Label htmlFor="serverStatus">Status</Label>
                   <select
@@ -145,6 +160,7 @@ const AddNewServerAchat = () => {
                   >
                     <option value="Stock complet">Stock complet</option>
                     <option value="Disponible">Disponible</option>
+                    <option value="Vendre rapidement">Vendre rapidement</option>
                   </select>
                 </div>
               </div>

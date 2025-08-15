@@ -105,6 +105,7 @@ export interface ServerSell {
   serverStatus: string;
   serverPriceDh: number;
   serverMinQty: number;
+  rate?: number;
   createdAt: string;
   updatedAt: string;
 }

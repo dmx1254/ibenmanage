@@ -35,6 +35,7 @@ async function initializeModels(): Promise<any> {
     serverStatus: string;
     serverPriceDh: number; // Changez à number si c'est un nombre
     serverMinQty?: number; // Optionnel
+    rate: number;
   }
 
   interface IEuro extends Document {
@@ -98,6 +99,7 @@ async function initializeModels(): Promise<any> {
       serverStatus: { type: String, required: true },
       serverPriceDh: { type: Number, required: true },
       serverMinQty: { type: Number },
+      rate: { type: Number, required: true, default: 1 },
     },
     { timestamps: true }
   );
