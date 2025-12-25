@@ -40,6 +40,7 @@ const CurrencyCard = ({ type, label, icon, cur, keyType }: StatCardProps) => {
               {keyType === "dollar" && "$"}
               {keyType === "aed" && "aed"}
               {keyType === "usdt" && "usdt"}
+              {keyType === "mad" && "DH"}
             </p>
           </div>
           <p className="text-14-regular">{label}</p>

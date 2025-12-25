@@ -56,7 +56,7 @@ export const columns: ColumnDef<ServerSell>[] = [
 
   {
     accessorKey: "serverPriceDh",
-    header: "Prix(Maroc DH)",
+    header: "Prix($)",
     cell: ({ row }) => <UpdateServerAchat type="price" data={row.original} />,
   },
   {

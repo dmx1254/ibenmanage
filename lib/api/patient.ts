@@ -162,7 +162,7 @@ export async function UpdateCurDevise(
   keyType: string,
   val: number
 ) {
-  const { UsdtModel, EuroModel, DollarModel, AedModel } = await goapiModels;
+  const { UsdtModel, EuroModel, DollarModel, AedModel, MadModel } = await goapiModels;
 
   let ModelChoose;
   ModelChoose =
@@ -172,6 +172,8 @@ export async function UpdateCurDevise(
       ? DollarModel
       : keyType === "aed"
       ? AedModel
+      : keyType === "mad"
+      ? MadModel
       : UsdtModel;
 
   try {
@@ -502,26 +504,27 @@ export async function getVenteCurrencies() {
 }
 
 export async function getCurrencies() {
-  const { EuroModel, DollarModel, AedModel, UsdtModel } = await goapiModels;
+  const { EuroModel, DollarModel, AedModel, UsdtModel, MadModel } = await goapiModels;
 
   try {
     const eurFinds = EuroModel.find();
     const usdFinds = DollarModel.find();
     const aedFinds = AedModel.find();
     const usdtFinds = UsdtModel.find();
-
-    const [eurF, usdF, aedF, usdtF] = await Promise.all([
+    const madFinds = MadModel.find();
+    const [eurF, usdF, aedF, usdtF, madF] = await Promise.all([
       eurFinds,
       usdFinds,
       aedFinds,
       usdtFinds,
+      madFinds,
     ]);
     const eur = JSON.parse(JSON.stringify(eurF));
     const usd = JSON.parse(JSON.stringify(usdF));
     const aed = JSON.parse(JSON.stringify(aedF));
     const usdt = JSON.parse(JSON.stringify(usdtF));
-
-    return { eur, usd, aed, usdt };
+    const mad = JSON.parse(JSON.stringify(madF));
+    return { eur, usd, aed, usdt, mad };
   } catch (error: any) {
     console.error(`Error fetching users: ${error}`);
   }
@@ -531,4 +534,5 @@ type CurrencyR = {
   eur: number;
   usd: number;
   aed: number;
+  mad: number;
 };

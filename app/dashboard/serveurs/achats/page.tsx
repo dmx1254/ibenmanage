@@ -50,9 +50,9 @@ const ServerAchatPage = async ({
           />
           <CurrencyCard
             type="pending"
-            keyType="dollar"
-            cur={currencies?.usd}
-            label="Dollar($)"
+            keyType="mad"
+            cur={currencies?.mad}
+            label="MAD(DH)"
             icon="/assets/icons/pending.svg"
           />
           <CurrencyCard

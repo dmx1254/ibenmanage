@@ -46,6 +46,10 @@ async function initializeModels(): Promise<any> {
     dollar: number;
   }
 
+  interface IMad extends Document {
+    mad: number;
+  }
+
   interface IAed extends Document {
     aed: number;
   }
@@ -141,6 +145,11 @@ async function initializeModels(): Promise<any> {
     { timestamps: true }
   );
 
+  const madSchema: Schema = new Schema(
+    { mad: { type: Number, required: true } },
+    { timestamps: true }
+  );
+
   const aedSchema: Schema = new Schema(
     { aed: { type: Number, required: true } },
     { timestamps: true }
@@ -160,6 +169,8 @@ async function initializeModels(): Promise<any> {
     goapiDB.models.euro || goapiDB.model<IEuro>("euro", euroSchema);
   const DollarModel =
     goapiDB.models.dollar || goapiDB.model<IDollar>("dollar", dollarSchema);
+  const MadModel =
+    goapiDB.models.mad || goapiDB.model<IMad>("mad", madSchema);
   const AedModel = goapiDB.models.aed || goapiDB.model<IAed>("aed", aedSchema);
   const UsdtModel =
     goapiDB.models.usdt || goapiDB.model<Iusdt>("usdt", usdtSchema);
@@ -173,6 +184,7 @@ async function initializeModels(): Promise<any> {
     ServerModel,
     EuroModel,
     DollarModel,
+    MadModel,
     AedModel,
     UsdtModel,
     BuyModel,

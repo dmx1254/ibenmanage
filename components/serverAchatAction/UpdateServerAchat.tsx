@@ -75,7 +75,7 @@ const UpdateServerAchat = ({
           onClick={() => setOpen(true)}
         >
           {type === "price" ? (
-            `${data.serverPriceDh}DH`
+            `${data.serverPriceDh}$`
           ) : type === "status" ? (
             <p
               className={clsx("text-14-medium p-2 rounded-[6px] inline-flex", {
@@ -150,7 +150,7 @@ const UpdateServerAchat = ({
                       }
                       className="bg-transparent mt-2 border-dark-500 text-white/80"
                     />
-                    <span className="absolute top-[53%] left-[90%]">DH</span>
+                    <span className="absolute top-[53%] left-[90%]">$</span>
                   </div>
                 )}
                 {(type === "price" || !type) && (
